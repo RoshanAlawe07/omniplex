@@ -41,5 +41,10 @@ export const store = configureStore({
 
 export const persistor = persistStore(store);
 
-export type RootState = ReturnType<typeof store.getState>;
+export type RootState = typeof store.getState;
 export type AppDispatch = typeof store.dispatch;
+
+// Expose store to window for testing purposes
+if (typeof window !== 'undefined') {
+  (window as any).__REDUX_STORE__ = store;
+}

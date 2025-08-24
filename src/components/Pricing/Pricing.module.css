@@ -1,0 +1,158 @@
+.pricingContainer {
+  min-height: 100vh;
+  background-color: #f9fafb;
+  padding: 3rem 1rem;
+}
+
+.pricingGrid {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.pricingHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.pricingTitle {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+.pricingSubtitle {
+  font-size: 1.25rem;
+  color: #6b7280;
+}
+
+.plansGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.planCard {
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.planCard:hover {
+  transform: translateY(-2px);
+}
+
+.planCard.featured {
+  border: 2px solid #3b82f6;
+  border-opacity: 0.5;
+}
+
+.planHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.planName {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.planPrice {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 0.25rem;
+}
+
+.planPeriod {
+  color: #6b7280;
+}
+
+.featuresList {
+  margin-bottom: 2rem;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.featureIcon {
+  height: 1.25rem;
+  width: 1.25rem;
+  color: #10b981;
+  margin-right: 0.75rem;
+}
+
+.subscribeButton {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease-in-out;
+  border: none;
+  cursor: pointer;
+}
+
+.subscribeButton.primary {
+  background-color: #2563eb;
+  color: white;
+}
+
+.subscribeButton.primary:hover {
+  background-color: #1d4ed8;
+}
+
+.subscribeButton.disabled {
+  background-color: #d1d5db;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+.testModeNotice {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.testModeBox {
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+.testModeTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1e40af;
+  margin-bottom: 0.5rem;
+}
+
+.testModeText {
+  color: #1e40af;
+  font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+  .pricingContainer {
+    padding: 2rem 0.5rem;
+  }
+  
+  .pricingTitle {
+    font-size: 1.875rem;
+  }
+  
+  .plansGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}

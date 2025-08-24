@@ -153,3 +153,66 @@ export type LibraryItem = {
   url: string;
   date: string;
 };
+
+// Stripe and Payment Types
+export type StripeCheckoutRequest = {
+  priceId: string;
+  customerEmail?: string;
+};
+
+export type StripeCheckoutResponse = {
+  sessionId: string;
+};
+
+export type StripeCustomer = {
+  id: string;
+  email: string;
+  metadata?: Record<string, string>;
+  created: number;
+};
+
+export type StripePayment = {
+  id: string;
+  date: string;
+  amount: string;
+  status: 'paid' | 'pending' | 'failed';
+  description: string;
+  invoice: string;
+};
+
+export type BillingPeriod = 'all' | '30' | '90' | '365';
+
+export type UserDetails = {
+  email?: string;
+  isPro: boolean;
+  uid?: string;
+  displayName?: string;
+  photoURL?: string;
+};
+
+export type StripeWebhookEvent = {
+  id: string;
+  type: string;
+  data: {
+    object: {
+      id: string;
+      customer?: string;
+      amount?: number;
+      status?: string;
+      metadata?: Record<string, string>;
+    };
+  };
+  created: number;
+};
+
+export type PaymentMethod = {
+  id: string;
+  type: 'card';
+  card: {
+    last4: string;
+    brand: string;
+    expMonth: number;
+    expYear: number;
+  };
+  isDefault: boolean;
+};

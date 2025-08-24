@@ -8,6 +8,7 @@ interface AuthState {
     name: string;
     email: string;
     profilePic: string;
+    isPro: boolean;
   };
 }
 
@@ -18,6 +19,7 @@ const initialState: AuthState = {
     name: "",
     email: "",
     profilePic: "",
+    isPro: false,
   },
 };
 
@@ -35,18 +37,24 @@ const authSlice = createSlice({
         name: string;
         email: string;
         profilePic: string;
+        isPro?: boolean;
       }>
     ) => {
-      state.userDetails = action.payload;
+      state.userDetails = { ...state.userDetails, ...action.payload };
     },
     resetAuth: () => {
       return initialState;
     },
+    setProStatus: (state, action: PayloadAction<boolean>) => {
+      state.userDetails.isPro = action.payload;
+    },
   },
 });
 
-export const { setAuthState, setUserDetailsState, resetAuth } =
+export const { setAuthState, setUserDetailsState, resetAuth, setProStatus } =
   authSlice.actions;
+
+
 
 export const selectAuthState = (state: RootState) => state.auth.authState;
 export const selectUserDetailsState = (state: RootState) =>

@@ -16,7 +16,7 @@ import { useDisclosure } from "@nextui-org/modal";
 import { Popover, PopoverContent, PopoverTrigger } from "@nextui-org/popover";
 import { createChatThread } from "../../store/chatSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { selectUserDetailsState, selectAuthState } from "@/store/authSlice";
+import { selectUserDetailsState, selectAuthState, setProStatus } from "@/store/authSlice";
 import { db } from "../../../firebaseConfig";
 import { storage } from "../../../firebaseConfig";
 import { collection, doc, setDoc, writeBatch } from "firebase/firestore";
@@ -235,6 +235,35 @@ const MainPrompt = () => {
   return (
     <div className={styles.container}>
       <div className={styles.title}>Where Knowledge Evolves</div>
+      <div className={styles.pricingLink}>
+        {userDetails?.isPro ? (
+          <div className={styles.proStatus}>
+            <span className={styles.proBadge}>✨ Pro Member</span>
+            <p className={styles.proMessage}>You have access to all premium features!</p>
+            <div className={styles.proButtons}>
+              <button 
+                onClick={() => dispatch(setProStatus(false))}
+                className={styles.resetButton}
+              >
+                🔄 Reset to Free (Testing)
+              </button>
+              <button 
+                onClick={() => router.push('/pricing')}
+                className={styles.manageButton}
+              >
+                📋 Manage Plan
+              </button>
+            </div>
+          </div>
+        ) : (
+          <button 
+            onClick={() => router.push('/pricing')}
+            className={styles.pricingButton}
+          >
+            🚀 Upgrade to Pro
+          </button>
+        )}
+      </div>
       <div className={styles.promptContainer}>
         <textarea
           placeholder="Ask anything..."
